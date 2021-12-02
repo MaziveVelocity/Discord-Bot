@@ -6,7 +6,7 @@ const bot = new Client({
     partials: ["MESSAGE", "USER", "CHANNEL"],
     intents: [Intents.FLAGS.GUILDS, "DIRECT_MESSAGES", "GUILD_MESSAGES"]
 });
-const { commandInput } = require('./utils/commands');
+const commandInput  = require('./utils/commands');
 
 const botId = '783507976580628490'
 
@@ -65,7 +65,7 @@ bot.on('messageCreate', msg => {
             .catch(console.error);
     }
 
-
+    commandInput(msg);
 });
 
 bot.login(process.env.BOT_TOKEN)

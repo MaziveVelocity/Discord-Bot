@@ -1,5 +1,7 @@
 
-function commandInput(message) {
+const commandInput = (msg) => {
+    const message = msg.content;
+    
     switch (message) {
         case '!flipcoin':
             result = Math.floor(Math.random() * 2);
@@ -37,4 +39,4 @@ function commandInput(message) {
     }
 }
 
-module.exports = commandInput()
+module.exports = commandInput;
