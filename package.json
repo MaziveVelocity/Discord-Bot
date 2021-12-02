@@ -9,6 +9,9 @@
   "name": "test-bot",
   "version": "1.0.0",
   "main": "bot.js",
+  "engines": {
+    "node": "16.13.0"
+  },
   "scripts": {
     "start": "node bot.js",
     "dev": "nodemon bot.js"
