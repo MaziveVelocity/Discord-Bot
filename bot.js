@@ -6,6 +6,7 @@ const bot = new Client({
     partials: ["MESSAGE", "USER", "CHANNEL"],
     intents: [Intents.FLAGS.GUILDS, "DIRECT_MESSAGES", "GUILD_MESSAGES"]
 });
+const { commandInput } = require('./utils/commands');
 
 const botId = '783507976580628490'
 
@@ -28,6 +29,15 @@ const memeReply = [
     'Im glad I join this server. These memes are fire.',
     'lol'
 ]
+
+// const commands = {
+//     flipCoin: {
+//         name: 'flipCoin',
+//         description: 'command to use'
+//     }
+// }
+
+let result;
 
 bot.on('ready', () => {
     console.log('Bot ready to go');
@@ -54,6 +64,8 @@ bot.on('messageCreate', msg => {
         msg.reply('Nice...')
             .catch(console.error);
     }
+
+
 });
 
 bot.login(process.env.BOT_TOKEN)
