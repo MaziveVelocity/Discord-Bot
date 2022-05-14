@@ -1,8 +1,13 @@
+const { User } = require("discord.js");
 
 const commandInput = (msg) => {
-    const message = msg.content;
-    
-    switch (message) {
+    const rawMessage = msg.content;
+    const messageArray = rawMessage.split(" ");
+    const command = messageArray[0];
+    const bot = msg.client;
+    const requestor = msg.author
+
+    switch (command) {
         case '!flipcoin':
             result = Math.floor(Math.random() * 2);
 
@@ -35,6 +40,19 @@ const commandInput = (msg) => {
         case '!rollD100':
             result = Math.floor(Math.random() * 100 + 1);
             msg.reply(`You rolled a ${result}`).catch(console.log);
+            break;
+        case '!find':
+            const username = messageArray[1];
+            const foundUser = bot.users.cache.find(user => user.username = username);
+            let message
+            
+            if (foundUser != undefined || foundUser != null){
+                message = `======================= \nUsername: ${foundUser.username} \nID: ${foundUser.id} \nIs Verified: ${foundUser.verified} \nTag: ${foundUser.tag}`
+            }else{
+                message = "User not found"
+            }
+
+            bot.users.cache.get(requestor.id).send(message);
             break;
     }
 }
